@@ -3,25 +3,25 @@
 namespace App\Controller;
 
 use App\Entity\Task;
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class TaskController extends AbstractController
 {
   /**
    * Lista as tarefas do sistema
    */
-  public function index(EntityManagerInterface $entity)
+  public function index(ManagerRegistry $doctrine)
   {
 
-    $repository = $entity->getRepository(Task::class); 
-
-    $tasks = $repository->findAll();
-
-    return new Response($this->render("tasks/index.html.twig", [
-      "tasks" => $tasks
-      ]));
+    $repository = $doctrine->getManager()->getRepository(Task::class); 
+  
+    return $this->render("tasks/index.html.twig", [
+      "tasks" => $repository->findAll()
+    ]);
   }
 
   /**
@@ -29,15 +29,11 @@ class TaskController extends AbstractController
    * 
    */
 
-  public function show($id, EntityManagerInterface $entity)
+  public function show(Task $task, ManagerRegistry $doctrine)
   {
-        $repository = $entity->getRepository(Task::class); 
-        
-        $task = $repository->find($id);
-
-        return new Response($this->render("tasks/show.html.twig", [
+      return $this->render("tasks/show.html.twig", [
             "task" => $task
-        ]));
+      ]);
   }
 
   /**
@@ -45,19 +41,19 @@ class TaskController extends AbstractController
    *
    * @return void
    */
-  public function create(EntityManagerInterface $entity)
+  public function create(ManagerRegistry $doctrine)
   {
         $task = new Task;
         $task->setTitle("Visitar o cliente X");
         $task->setDescription("Visitar o cliente X por razão X");
         $task->setScheduling(new \DateTime()); //hora atual
 
-        // var_dump($task);
-        // var_dump($task->getDescription());
-
+        $entity = $doctrine->getManager();
         $entity->persist($task);
         $entity->flush();
-        return new Response("Registro criado com sucesso id: " . $task->getId());
+
+        $this->generateUrl("task_show", ["id" => $task->getId()]);
+        return $this->redirectToRoute("task_show", ["id" => $task->getId()]);
   }
 
-}
+}   

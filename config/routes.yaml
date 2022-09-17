@@ -1,14 +1,14 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
-index:
+task_index:
     path: /tasks
     controller: App\Controller\TaskController::index
     methods: [GET, POST]
     # schemes: [HTTPS]
     # host: {nome_usuario}.'tarefas.test'
 
-show:
+task_show:
     path: /tasks/show/{id?10}
     controller: App\Controller\TaskController::show
     requirements:
@@ -18,6 +18,6 @@ show:
     # defaults:
     #     id: 0
 
-create: 
+task_create: 
     path: /tasks/create
     controller: App\Controller\TaskController::create

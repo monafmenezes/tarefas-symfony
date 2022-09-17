@@ -4,3 +4,5 @@ gerar as entidades que estão falntando: php bin/console make:entity --regenerat
 criar migração: php bin/console make:migration
 gerar migração: php bin/console doctrine:migrations:migrate
 rodar servidor: symfony server:start
+criar controller com template: php bin/console make:controller
+criar controller sem template: php bin/console make:controller --no-template
