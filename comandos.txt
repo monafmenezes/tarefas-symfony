@@ -1,0 +1,6 @@
+criar banco de dados: sudo apt-get install -y php-pdo-mysql
+criar entidade/adicionar novos campos: php bin/console make:entity nome-entidade
+gerar as entidades que estão falntando: php bin/console make:entity --regenerate
+criar migração: php bin/console make:migration
+gerar migração: php bin/console doctrine:migrations:migrate
+rodar servidor: symfony server:start

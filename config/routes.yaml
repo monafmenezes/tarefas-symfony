@@ -1,0 +1,23 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+index:
+    path: /tasks
+    controller: App\Controller\TaskController::index
+    methods: [GET, POST]
+    # schemes: [HTTPS]
+    # host: {nome_usuario}.'tarefas.test'
+
+show:
+    path: /tasks/show/{id?10}
+    controller: App\Controller\TaskController::show
+    requirements:
+        id: '\d+'
+    methods: [GET]
+    condition: "context.getMethod() in ['GET'] and request.headers.get('User-Agent') matches '/Chrome/i'"
+    # defaults:
+    #     id: 0
+
+create: 
+    path: /tasks/create
+    controller: App\Controller\TaskController::create

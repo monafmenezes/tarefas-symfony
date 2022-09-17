@@ -1,0 +1,54 @@
+{# {% extends "base.html.twig" %}
+
+{% block title %}
+  Lista de Tarefas
+{% endblock %}
+
+{% block body %}
+
+
+  {# <h1> {{ escola }}</h1> #}
+  {# <h2>Curso: {{ curso }}</h2>
+
+  {% if curso == "Symfony" %}
+      <p>Curso de Symfony</p>
+  {% else %}
+      <p>Não sei qual curso está fazendo</p>
+  {% endif %}
+
+  {% for curso in cursos %}
+    <p>{{ curso.name }}</p>
+  {% endfor %} 
+{% endblock %}  #}
+
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Lista de tarefas
+{% endblock %}
+
+{% block body %}
+<h1>Lista de tarefas</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Título</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Data</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for task in tasks %}
+    <tr>
+      <th scope="row">{{ task.id }}</th>
+      <td>{{ task.title }}</td>
+      <td>{{ task.description }}</td>
+      <td></td>
+    </tr>
+  {% endfor %}  
+  </tbody>
+</table>
+{% endblock %} 
+
