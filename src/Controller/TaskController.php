@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class TaskController extends AbstractController
 {
   /**
-   * Lista as tarefas do sistema
+   * Lista tarefas do banco de dados
    */
   public function index(ManagerRegistry $doctrine)
   {
@@ -25,10 +25,13 @@ class TaskController extends AbstractController
     ]);
   }
 
-  /**
-   * Mostra tarefa específica
-   * 
-   */
+ /**
+  * Mostra uma tarefa específica 
+  *
+  * @param Task $task
+  * @param ManagerRegistry $doctrine
+  * @return void
+  */
 
   public function show(Task $task, ManagerRegistry $doctrine)
   {
@@ -77,7 +80,7 @@ class TaskController extends AbstractController
   }
 
   /**
-   * Editamos as tarefas
+   * Edita uma tarefa no banco de dados
    *
    * @param Request $request
    * @param Task $task
@@ -99,7 +102,7 @@ class TaskController extends AbstractController
   }
 
   /**
-   * Undocumented function
+   * Apaga uma tarefa no banco de dados
    *
    * @param Task $task
    * @return Response
