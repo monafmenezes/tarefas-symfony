@@ -1,5 +1,6 @@
 <div class="col-sm-12">
   <form action="" method="POST">
+    <input type="hidden" name="_token" value="{{ csrf_token('cadastro_tarefas') }}" />
       <div class="form-group">
         <label for="title">Título</label>
         <input class="form-control" name="title" placeholder="Título" value="{{ task.title ?? '' }}"/>

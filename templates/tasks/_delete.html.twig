@@ -1,6 +1,7 @@
 <div class="col-sm-12 text-right">
     <form action="{{ path('task_delete', {id: task.id}) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja apagar')">
         <input type="hidden" name="_method" value="DELETE" />
+        <input type="hidden" name="_token" value="{{ csrf_token('deletar_tarefa') }}" />
         <button class="btn btn-danger">Apagar tarefa</button>
     </form>
 </div>
