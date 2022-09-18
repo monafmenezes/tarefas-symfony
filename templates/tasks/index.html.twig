@@ -29,26 +29,38 @@
 
 {% block body %}
 <h1>Lista de tarefas</h1>
+<div class="col-sm-12 m-tb">
+  <a href="{{ url('task_new') }}" class="btn btn-primary">Criar Tarefa</a>
+</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Título</th>
-      <th scope="col">Descrição</th>
-      <th scope="col">Data</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for task in tasks %}
-    <tr>
-      <th scope="row">{{ task.id }}</th>
-      <td>{{ task.title }}</td>
-      <td>{{ task.description }}</td>
-      <td></td>
-    </tr>
-  {% endfor %}  
-  </tbody>
-</table>
+<div class="col-sm-12">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Título</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Data</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for task in tasks %}
+      <tr>
+        <th scope="row">{{ task.id }}</th>
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>
+          <a class="btn btn-primary" href="{{ url('task_show', {id: task.id}) }}">Ver</a>
+        </td>
+        <td>
+          <a class="btn btn-success" href="{{ url('task_edit', {id: task.id}) }}">Atualizar</a>
+        </td>
+        <td></td>
+      </tr>
+    {% endfor %}  
+    </tbody>
+  </table>
+</div>
+
 {% endblock %} 
 

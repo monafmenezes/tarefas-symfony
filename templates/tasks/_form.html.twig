@@ -1,0 +1,17 @@
+<div class="col-sm-12">
+  <form action="" method="POST">
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input class="form-control" name="title" placeholder="Título" value="{{ task.title ?? '' }}"/>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descrição</label>
+        <textarea class="form-control" name="description" placeholder="Descrição">{{ task.description ?? '' }}</textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Gravar</button>
+      <a href="{{ url('task_index') }}" class="btn btn-default">Voltar</a>
+  </form>
+
+</div>

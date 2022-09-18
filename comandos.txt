@@ -6,3 +6,6 @@ gerar migração: php bin/console doctrine:migrations:migrate
 rodar servidor: symfony server:start
 criar controller com template: php bin/console make:controller
 criar controller sem template: php bin/console make:controller --no-template
+
+                                                        chave valor 
+passar parametro por url: http://127.0.0.1:41171/cliente?cor=verde&tamanho=4

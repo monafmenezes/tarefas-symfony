@@ -1,6 +1,11 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+home:
+    path: /
+    controller: App\Controller\HomeController::index
+    
 task_index:
     path: /tasks
     controller: App\Controller\TaskController::index
@@ -18,6 +23,17 @@ task_show:
     # defaults:
     #     id: 0
 
-task_create: 
-    path: /tasks/create
-    controller: App\Controller\TaskController::create
+task_new: 
+    path: /tasks/new
+    controller: App\Controller\TaskController::new
+    methods: [GET, POST]
+
+task_edit:
+    path: /tasks/{id}/edit
+    controller: App\Controller\TaskController::edit
+    methods: [GET, POST]
+
+task_delete:
+    path: /tasks/{id}
+    controller: App\Controller\TaskController::delete
+    methods: [DELETE]
