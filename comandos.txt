@@ -1,6 +1,7 @@
 criar banco de dados: php bin/console doctrine:database:create
 criar entidade/adicionar novos campos: php bin/console make:entity nome-entidade
 gerar as entidades que estão falntando: php bin/console make:entity --regenerate
+gerar controller usuário: php bin/console make:user
 criar migração: php bin/console make:migration
 gerar migração: php bin/console doctrine:migrations:migrate
 rodar servidor: symfony server:start
